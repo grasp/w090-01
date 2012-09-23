@@ -1,0 +1,33 @@
+source "http://rubygems.org"
+
+require "pathname"
+project_path = Pathname.new(File.dirname(__FILE__)).parent
+
+# Declare your gem's dependencies in ruser.gemspec.
+# Bundler will treat runtime dependencies like base dependencies, and
+# development dependencies will be added by default to the :development group.
+gemspec
+
+# jquery-rails is used by the dummy application
+gem "jquery-rails"
+
+# Declare any dependencies that are still in development here instead of in
+# your gemspec. These might include edge Rails or gems from your path or
+# Git. Remember to move these dependencies to your gemspec before releasing
+# your gem to rubygems.org.
+
+# To use debugger
+# gem 'debugger'
+
+gem "mongoid"
+gem 'bson_ext'
+gem "rails"
+
+#current , we use local file gem, in future, we will use gem package to upgrade
+gem "rtheme" ,:path=>File.join(project_path ,"Rtheme") #development use local path
+
+group :development, :test do
+ #to disable annoying assets log , need initialize , and blow link for rails 3.2 
+gem 'quiet_assets', :git => 'http://github.com/AgilionApps/quiet_assets' 
+
+end

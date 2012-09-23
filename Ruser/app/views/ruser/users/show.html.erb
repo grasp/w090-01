@@ -1,0 +1,90 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Admin:</b>
+  <%= @user.admin %>
+</p>
+
+<p>
+  <b>Rname:</b>
+  <%= @user.rname %>
+</p>
+
+<p>
+  <b>Hpwd:</b>
+  <%= @user.hpwd %>
+</p>
+
+<p>
+  <b>Salt:</b>
+  <%= @user.salt %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @user.status %>
+</p>
+
+<p>
+  <b>Activate:</b>
+  <%= @user.activate %>
+</p>
+
+<p>
+  <b>Preference:</b>
+  <%= @user.preference %>
+</p>
+
+<p>
+  <b>Mphone:</b>
+  <%= @user.mphone %>
+</p>
+
+<p>
+  <b>Incnt:</b>
+  <%= @user.incnt %>
+</p>
+
+<p>
+  <b>Curinat:</b>
+  <%= @user.curinat %>
+</p>
+
+<p>
+  <b>Lasinat:</b>
+  <%= @user.lasinat %>
+</p>
+
+<p>
+  <b>Curinip:</b>
+  <%= @user.curinip %>
+</p>
+
+<p>
+  <b>Lasinip:</b>
+  <%= @user.lasinip %>
+</p>
+
+<p>
+  <b>Bio:</b>
+  <%= @user.bio %>
+</p>
+
+<p>
+  <b>Webs:</b>
+  <%= @user.webs %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

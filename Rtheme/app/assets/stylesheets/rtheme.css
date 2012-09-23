@@ -1,0 +1,25 @@
+body .navbar {
+  // Fix for IE7's bad z-indexing so dropdowns don't appear below content that follows the navbar
+  *position: relative;
+  *z-index: 2;
+
+  overflow: visible;
+  //margin-bottom: @baseLineHeight;
+ margin-bottom:0px;
+}
+
+.container {
+width: 960px;
+}
+.container-fluid {
+position: relative;
+min-width: 940px;
+//padding-left: 20px;
+//padding-right: 20px;
+zoom: 1;
+}
+
+.topbar { position: static; margin-bottom:20px;}
+
+.navbar ~ .container {margin-top:40px;}
+//.sidebar {margin-top:60px;}
