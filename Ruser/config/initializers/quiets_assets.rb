@@ -1,4 +1,8 @@
-Rails.application.assets.logger = Logger.new('/dev/null')
+#Rails.application.assets.logger = Logger.new('/dev/null')
+#Rails.application.assets.logger = Logger.new('NUL')
+RUBY_PLATFORM.match("linux") ? Rails.application.assets.logger = Logger.new('/dev/null') :
+                               Rails.application.assets.logger = Logger.new('NUL')
+
 Rails::Rack::Logger.class_eval do
   def call_with_quiet_assets(env)
     previous_level = Rails.logger.level

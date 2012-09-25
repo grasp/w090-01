@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Dummy::Application.config.secret_token = '3201d67923b17446f574fa28e01068088696b456ae92d46d6c444432071c5c717de11fd62f980541afeb84827baa59f6216726dbeb8ed47bc9146c006ec76552'
+Dummy::Application.config.secret_token = '88b8f6d361d7bff968021b81b672d4df72115d7c95a7601e134a1d251ac444165d12c4ddeacea1f5e29747ba2af796594bf5d0af797804966d7bf689e07d1cd6'
