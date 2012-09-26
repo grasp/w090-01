@@ -11,17 +11,21 @@
     <meta content='True' name='HandheldFriendly' />
     <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
   <% end %>
+
   <meta name="keywords" content="<%= @meta_keywords %>" />
   <meta name="description" content="<%= @meta_description %>" />
+
   <meta charset='utf-8'>
   <link rel="shortcut icon" href="<%= asset_path("rtheme/w090-truck.png") %>" /> 
+
   <%= csrf_meta_tag %>
   <%#= auto_discovery_link_tag(:rss,rforum.feed_topics_url,:title => '订阅最新贴') %>
   <%= yield :node_feed_link %>
 </head>
 
 <%= render_body_tag %>
-    <div class="navbar navbar-fixed-top">
+
+  <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -33,11 +37,12 @@
         <div class="nav-collapse">
         <ul class="nav">
         <%= render "rtheme/common/search_form" %>      
-        <%= render "rtheme/common/user_nav" %>
+        <%#= render "rtheme/common/user_nav" %>
         </div><!-- /.nav-collapse -->
       </div>
     </div><!-- /navbar-inner -->
   </div>
+
 <div></div>
 
   <div class="container">
@@ -47,12 +52,14 @@
       <%= yield %>
     </div>
   </div>
+
   <% if not mobile? %>
   <footer class="footer">
     <div class="container">
       <%= raw Ruser::SiteConfig.footer_html %>
     </div>
   </footer>
+
   <% end %>
  
   <%= javascript_include_tag "rtheme/rcity/application" %>

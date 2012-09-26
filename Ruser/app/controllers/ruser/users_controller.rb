@@ -4,6 +4,16 @@ module Ruser
   class UsersController < ApplicationController
     # GET /users
     # GET /users.json
+    layout "rtheme/ruser"
+
+   
+    before_filter :set_locale
+ 
+def set_locale
+  I18n.locale = params[:locale] || I18n.default_locale
+end
+
+
     def index
       @users = User.all
   

@@ -18,4 +18,3 @@
 #= require jquery/jquery.hotkeys
 #= require jquery/jquery.chosen
 #= require jquery/jquery.autogrow-textarea
-#= require jquery.atwho

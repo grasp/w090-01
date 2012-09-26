@@ -1,9 +1,9 @@
 require 'rubygems'
 require 'pathname'
 #require 'bootstrap-rails'
-require 'will_paginate'
-require  'will_paginate_mongoid'
-require  'bootstrap-will_paginate'
+#require 'will_paginate'
+#require  'will_paginate_mongoid'
+#require  'bootstrap-will_paginate'
 #require " ../breadcrumb.rb"  #as Rtheme is common , so put breadcrumb into rtheme lib ,so all app can use
 require File.join(Pathname.new(File.dirname(__FILE__)).parent,"breadcrumb.rb")
 require File.join(Pathname.new(File.dirname(__FILE__)).parent,"helper.rb")
