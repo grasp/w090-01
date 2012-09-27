@@ -1,2 +1,45 @@
-<h1>Account#new</h1>
-<p>Find me in app/views/ruser/account/new.html.erb</p>
+
+<%= form_for(@user,:url=>ruser.account_create_url,:html => {:class => "form-horizontal form-inline"}) do |f| %>
+<legend>用户注册</legend>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(@user.errors.count, "错误") %></h4>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <fieldset class="control-group">
+    <label class="control-label">用户名*:</label>
+    <div class="controls">   <%= f.text_field :name %></div>
+  </fieldset>
+  
+ <fieldset class="control-group">
+    <label class="control-label" id="register_email">Email*:</label>
+   <div class="controls"> <%= f.text_field :email %></div>
+ </fieldset>
+
+ <fieldset class="control-group">
+    <label class="control-label">设置密码*:</label>
+    <div class="controls"> <%= f.password_field :password %></div>
+ </fieldset>
+
+ <fieldset class="control-group">
+    <label class="control-label">确认密码*:</label>
+    <div class="controls">  <%= f.password_field :password_confirmation %></div>
+ </fieldset>
+
+ <fieldset class="control-group">
+    <label class="control-label">联系手机*:</label>
+   <div class="controls">  <%= f.text_field :mphone %></div>
+ </fieldset>
+
+  <div class="form-actions">
+    <%= f.submit("确  定",:class=>"btn primary" ,:style=> "width:80px") %>
+ </fieldset>
+
+<% end %>
+<p>* 为必填项</p>

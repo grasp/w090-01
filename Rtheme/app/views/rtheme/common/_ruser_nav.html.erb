@@ -1,20 +1,21 @@
-<% if current_user %>
+<% unless current_user.nil? %>
 <ul class="nav secondary-nav" id="userbar">
   <%
-    unread_count = current_user.notifications.unread.count
-    notification_class = ["notifications"]
-    notification_class << "unread" if unread_count > 0
-    notification_class << "active" if ["notifications"].index(params[:controller])
+   # unread_count = current_user.notifications.unread.count
+   # notification_class = ["notifications"]
+   # notification_class << "unread" if unread_count > 0
+   # notification_class << "active" if ["notifications"].index(params[:controller])
   %>
   <%= content_tag 'li', :class => notification_class do %>
     <%= content_tag 'a', :href => ruser.notifications_path do %>
       <span class="count"><%= unread_count %></span>
     <% end %>
   <% end %>
+
   <li class="dropdown">
 <!--
     <%= link_to(current_user.login,ruser.user_path(current_user.login), :class => "dropdown-toggle",:"data-toggle"=>"dropdown")%>-->
-       <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%=current_user.login%> <b class="caret"></b></a>
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%=current_user.login%> <b class="caret"></b></a>
     <%= render_list :class => "dropdown-menu" do |li|
       li << link_to(t("menu.my_home_page"), ruser.user_path(current_user.login) )
       unless params[:controller].match(/cpanel/)
@@ -29,8 +30,8 @@
 
 <!--
   <li class="dropdown">
-             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown 3 <b class="caret"></b></a>
-                  <%= link_to(current_user.login,ruser.user_path(current_user.login), :class => "dropdown-toggle",:"data-toggle"=>"dropdown")%>
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown 3 <b class="caret"></b></a>
+       <%= link_to(current_user.login,ruser.user_path(current_user.login), :class => "dropdown-toggle",:"data-toggle"=>"dropdown")%>
               <ul id="menu3" class="dropdown-menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
@@ -38,12 +39,22 @@
                 <li class="divider"></li>
                 <li><a href="#">Separated link</a></li>
               </ul>
-            </li>
-          -->
+  </li>
+  -->
 </ul>
 <% else %>
   <%= render_list :class => "nav secondary-nav", :id => "userbar" do |li|
-    li << link_to( t("common.register"),ruser.new_user_registration_path)
-    li << link_to( t("common.login"), ruser.new_user_session_path )
-  end %>
+    li << link_to( t("user.register"),ruser.account_new_path)
+    li << link_to( t("user.login"), ruser.rsession_new_path )
+ end %>
+
+  <li class="dropdown">
+
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">用户管理<b class="caret"></b></a>
+    <%= render_list :class => "dropdown-menu" do |li|
+      li << link_to("用户列表", ruser.radmin_user_list_path )      
+      li << link_to("总控表", ruser.radmin_dashboard_path )
+    end %>
+  </li>
+
 <% end %>

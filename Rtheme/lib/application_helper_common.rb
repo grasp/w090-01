@@ -1,4 +1,14 @@
 module ApplicationHelperCommon
+
+  def current_user
+     if session[:user_id]
+       current_user = Ruser::User.find(session[:user_id])
+     else
+       current_user = nil
+     end
+   current_user
+  end
+  
   def notice_message
     flash_messages = []
 

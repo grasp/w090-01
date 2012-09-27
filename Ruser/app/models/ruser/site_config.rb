@@ -10,7 +10,7 @@ class Ruser::SiteConfig
   field :key
   field :value
 
-  index :key
+  index({ key: 1 }, { unique: true, name: "ruser_siteconfig_index" })
 
   validates_presence_of :key
   validates_uniqueness_of :key

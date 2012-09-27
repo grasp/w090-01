@@ -23,6 +23,9 @@ gem "jquery-rails" #seem could not delete here
 
 gem "settingslogic", "~> 2.0.6"
 
+gem "will_paginate", "~> 3.0.3"
+gem "will_paginate_mongoid", :git =>"http://github.com/grasp/will_paginate_mongoid.git"
+
 #bootstrap resource needed?
 group :assets do
     gem 'sass-rails',   '~> 3.2.5'
@@ -35,4 +38,5 @@ gem "rtheme" ,:path=>File.join(project_path,"Rtheme") #need change to gem path
 
 group :development, :test do
     gem 'quiet_assets', :git => 'http://github.com/AgilionApps/quiet_assets'
+    gem 'thin'
 end

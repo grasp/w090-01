@@ -1,6 +1,9 @@
 zh-CN:
   common:
     search: "搜索"
+  user:
+    register: "注册"
+    login: "登录"
   date:
     abbr_day_names:
     - 日

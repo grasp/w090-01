@@ -1,6 +1,9 @@
 en:
   common:
     search: "search"
+  user:
+    register: "register"
+    login: "login"
   date:
     abbr_day_names:
     - Sun

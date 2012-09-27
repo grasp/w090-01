@@ -1,2 +1,61 @@
+
+<p> total user= <%=@user_count%></p>
 <h1>Radmin#user_list</h1>
-<p>Find me in app/views/ruser/radmin/user_list.html.erb</p>
+<h1>Listing users</h1>
+
+<table>
+  <tr>
+    <th>Email</th>
+    <th>Name</th>
+    <th>Admin</th>
+    <th>Rname</th>
+    <th>Hpwd</th>
+    <th>Salt</th>
+    <th>Status</th>
+    <th>Activate</th>
+    <th>Preference</th>
+    <th>Mphone</th>
+    <th>Incnt</th>
+    <th>Curinat</th>
+    <th>Lasinat</th>
+    <th>Curinip</th>
+    <th>Lasinip</th>
+    <th>Bio</th>
+    <th>Webs</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.email %></td>
+    <td><%= user.name %></td>
+    <td><%= user.admin %></td>
+    <td><%= user.rname %></td>
+    <td><%= user.hpwd %></td>
+    <td><%= user.salt %></td>
+    <td><%= user.status %></td>
+    <td><%= user.activate %></td>
+    <td><%= user.preference %></td>
+    <td><%= user.mphone %></td>
+    <td><%= user.incnt %></td>
+    <td><%= user.curinat %></td>
+    <td><%= user.lasinat %></td>
+    <td><%= user.curinip %></td>
+    <td><%= user.lasinip %></td>
+    <td><%= user.bio %></td>
+    <td><%= user.webs %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User', new_user_path %>
+
+<%= will_paginate @users %>
+
