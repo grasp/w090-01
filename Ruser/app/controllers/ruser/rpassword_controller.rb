@@ -8,5 +8,6 @@ module Ruser
   
     def edit
     end
+    
   end
 end

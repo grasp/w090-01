@@ -22,9 +22,11 @@ Ruser::Engine.routes.draw do
   match "account/new", :to => "account#new"
   match "account/create", :to => "account#create"
   match "account/edit", :to => "account#edit"
+  match "account/show", :to => "account#show"
+  match "account/update", :to => "account#update"
 
   resources :users
 
-   root :to => "radmin#dashboard"
+  root :to => "radmin#dashboard"
 
 end

@@ -41,26 +41,26 @@ module Ruser
       else
        
         if @user.status =="new_register" 
-          flash[:notice] = "请到你的邮箱#{@user.email}去确认邮箱" 
+          flash[:notice] = "登录成功，你还没有确认你的邮箱地址" 
         end
-
-        #keep session information for next use
-        session[:user_id]=@user.id  #BSon to string??,no
-        session[:user_name]=@user.name
-        session[:user_email]=@user.email
+        record_user_session(@user) #record user information in session , so we can recoginzie
   
      #redirect to original URL
         unless session[:original_url]
-        format.html { redirect_to "/",:flash=>{:notice=>flash[:notice]}}
+          format.html { redirect_to ruser.account_show_path,:notice =>flash[:notice]}
         else
-        format.html { redirect_to session[:original_url],:flash=>{:notice=>flash[:notice]}}
+          format.html { redirect_to session[:original_url],:flash=>{:notice=>flash[:notice]}}
         end
-
       end
     end
     end
   
     def destroy
+        destroy_user_session
+
+        #delete cookie
+        cookies.delete :remember_me
+        redirect_to ruser.root_path,:notice =>"成功退出！"
     end
   end
 end

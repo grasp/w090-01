@@ -1,13 +1,45 @@
+#coding:utf-8
 module ApplicationHelperCommon
-
-  def current_user
-     if session[:user_id]
-       current_user = Ruser::User.find(session[:user_id])
-     else
-       current_user = nil
-     end
-   current_user
+  def current_user_login?
+    return  true unless session[:user_id].blank? #avoid read again and again
+    #add cookie login
+    unless cookies.signed.blank?
+     exist_cookie= cookies.signed[:remember_me]
+     unless exist_cookie.blank?
+      if  exist_cookie[2] == 1
+       current_user = Ruser::User.authenticated_with_token(exist_cookie[0],exist_cookie[1])
+       if current_user
+         record_user_session(current_user)
+       return true
+       end   
+      end
+     end 
+    end
+   current_user.nil? ? false : true
   end
+
+def record_user_session(current_user)
+    session[:user_id]=current_user.id  #BSon to string??,no
+    session[:user_name]=current_user.name
+    session[:user_email]=current_user.email
+    session[:admin] = true if current_user.name=="admin"
+end
+
+def destroy_user_session
+    session[:user_id]= nil
+    session[:user_name]= nil
+    session[:user_email]=nil
+    session[:admin] = false
+end
+
+#add to before filter
+def require_user
+  redirect_to ruser.rsession_new_path,:notice=>"请先登录" if session[:user_id].nil?
+end
+
+def require_admin
+  redirect_to ruser.rsession_new_path,:notice=>"sorry, you dont have permission for this" unless session[:admin]
+end
   
   def notice_message
     flash_messages = []

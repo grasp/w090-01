@@ -8,6 +8,7 @@ module Ruser
 
    
     before_filter :set_locale
+    before_filter :require_admin
  
      def set_locale
       I18n.locale = params[:locale] || I18n.default_locale
