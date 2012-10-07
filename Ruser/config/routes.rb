@@ -17,6 +17,10 @@ Ruser::Engine.routes.draw do
   #rpassword
   match "rpassword/new", :to => "rpassword#new"
   match "rpassword/edit", :to => "rpassword#edit"
+  match "rpassword/pw_reset_request", :to => "rpassword#pw_reset_request"
+  match "rpassword/pw_sent_confirm", :to => "rpassword#pw_sent_confirm"
+  match "rpassword/change_password_confirm/:activate", :to => "rpassword#change_password_confirm"
+  match "rpassword/pwreset", :to => "rpassword#pwreset"
 
   #account
   match "account/new", :to => "account#new"

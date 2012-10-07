@@ -21,9 +21,9 @@
     end %>
   </li>
 
-  <%if session[:admin]%>
+  <%if session[:user_name] == "admin"%>
     <li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">用户管理<b class="caret"></b></a>
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">网站管理<b class="caret"></b></a>
     <%= render_list :class => "dropdown-menu" do |li|
       li << link_to("用户列表", ruser.radmin_user_list_path )      
       li << link_to("总控表", ruser.radmin_dashboard_path )
@@ -37,8 +37,6 @@
   <%= render_list :class => "nav secondary-nav", :id => "userbar" do |li|
     li << link_to( t("user.register"),ruser.account_new_path)
     li << link_to( t("user.login"), ruser.rsession_new_path )
- end %>
-
- 
+ end %> 
 
 <% end %>

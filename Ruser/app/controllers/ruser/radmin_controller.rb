@@ -10,11 +10,13 @@ module Ruser
     end
   
     def user_search
+         @users =Ruser::User.where(:name => params[:q]).paginate(:per_page => 30)
+         render "user_list"
     end
   
     def user_list
         @user_count = Ruser::User.count
-        @users =Ruser::User.paginate(:page => params[:page], :per_page => 30)
+        @users =Ruser::User.paginate(:page => params[:page], :per_page => 530)
     end
   
     def user_edit

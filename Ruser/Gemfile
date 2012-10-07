@@ -35,6 +35,7 @@ group :assets do
 end
 
 gem "rtheme" ,:path=>File.join(project_path,"Rtheme") #need change to gem path
+gem 'mongo'
 
 group :development, :test do
     gem 'quiet_assets', :git => 'http://github.com/AgilionApps/quiet_assets'

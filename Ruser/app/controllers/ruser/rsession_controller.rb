@@ -8,7 +8,7 @@ module Ruser
     end
 
   def authentication
-   session[:user_id]= nil
+    session[:user_id]= nil
     result=Ruser::User.authenticate( params[:email],params[:password])
     @user=result[0]
     if @user
@@ -37,7 +37,7 @@ module Ruser
       # if @user.nil? || @user.status !="actived"
       if @user.nil?
          flash[:notice]="登录失败:#{result[1]}"
-         format.html { redirect_to(:controller=>'users',:action=>"login")}
+         format.html { redirect_to(:controller=>'rsession',:action=>"new")}
       else
        
         if @user.status =="new_register" 
@@ -57,7 +57,6 @@ module Ruser
   
     def destroy
         destroy_user_session
-
         #delete cookie
         cookies.delete :remember_me
         redirect_to ruser.root_path,:notice =>"成功退出！"
